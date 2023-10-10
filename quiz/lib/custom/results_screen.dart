@@ -7,9 +7,11 @@ class ResultsScreen extends StatelessWidget {
   const ResultsScreen({
     super.key,
     required this.chosenAnswers,
+    required this.onRestart,
   });
 
   final List<String> chosenAnswers;
+  final Function onRestart;
 
   List<Map<String, Object>> getSummaryData() {
     final List<Map<String, Object>> summaryData = [];
@@ -55,8 +57,10 @@ class ResultsScreen extends StatelessWidget {
             summaryData,
           ),
           const SizedBox(height: 36),
-          OutlinedButton.icon(
-            onPressed: () {},
+          TextButton.icon(
+            onPressed: () {
+              onRestart();
+            },
             icon: const Icon(
               Icons.refresh_rounded,
               color: Color.fromARGB(255, 241, 241, 241),
